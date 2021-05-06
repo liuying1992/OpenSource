@@ -6,8 +6,7 @@
     * LiveData + ViewModel
     * 创建`Model`继承`ViewModel`，将数据包装到`MutableLiveData<T>`中,构造函数中初始化数据仓库`Repository` 
     
- ```
- public class IndexModel extends ViewModel {
+ ```public class IndexModel extends ViewModel {
   private MutableLiveData<IndexInfo> mIndexInfoMutableLiveData = new MutableLiveData<>();
 
   //数据仓库
@@ -29,13 +28,11 @@
   public void getIndexInfo() {
     mIndexRepository.getIndexInfo();
   }
-}
+}```
+   
+   * Repository 层完成接口数据的获取以及转换为持久化数据。
 
-```
-    * Repository 层完成接口数据的获取以及转换为持久化数据。
-
- ```
-  public class IndexRepository {
+ ```public class IndexRepository {
   private MutableLiveData<IndexInfo> indexInfoMutableLiveData;
 
   public IndexRepository(MutableLiveData<IndexInfo> indexInfoMutableLiveData) {
@@ -63,11 +60,11 @@
   }
 } ```
     
-    * Activity层绑定数据
+ 
+ * Activity层绑定数据
  
 
-```
-private void initModel() {
+```private void initModel() {
     indexModel = ViewModelProviders.of(this).get(IndexModel.class);
  Observer<IndexInfo> indexInfoObserver = new Observer<IndexInfo>() {
       @Override public void onChanged(IndexInfo indexInfo) {
